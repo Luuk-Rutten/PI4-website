@@ -1,0 +1,41 @@
+﻿@page
+@model PI4_website.Pages.VideosModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+}
+@* 
+<div class="text-center">
+    <h3 class="display-4">Video's'</h3>
+</div> *@
+
+<form method="post" class="searchForm">
+    <input type="text" name="searchString" />
+    <input type="submit" value="Zoek" />
+</form>
+
+<table class="table">
+    <tr>
+        <th>Video's</th>
+
+    </tr>
+    <tr/>
+    @foreach (var onderwerp in Model.VideoCollectie)
+    {
+        <tr>
+            <td>@onderwerp.Name</td>
+            <td>
+                <iframe width="420" height="315"
+                        src="@onderwerp.Link">
+                </iframe>
+                </td>
+            <td>
+                <a asp-route-id="@onderwerp.VideoID"
+                   asp-page="/VideoDetail">Toon</a>
+
+                <a asp-route-id="@onderwerp.VideoID"
+                   asp-page-handler="Delete">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

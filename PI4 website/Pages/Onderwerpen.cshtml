@@ -1,0 +1,43 @@
+﻿@page
+@model PI4_website.Pages.OnderwerpenModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+ 
+@{
+}
+
+<div class="text-center">
+    <h3 class="display-4">Onderwerp toevoegen</h3>
+</div>
+
+<form method="post">
+    Voeg onderwerp toe: <input asp-for="OnderwerpProperty.Name" />
+   
+    <input asp-for="OnderwerpProperty.OnderwerpID" type="hidden" />
+
+    <input type="submit" />
+     @* <div asp-validation-summary="All" style="color:red"></div>  *@
+
+</form>
+
+
+<table class="table">
+    <tr>
+        <th>Onderwerpen</th>
+        
+    </tr>
+    @foreach (var onderwerp in Model.OnderwerpenCollectie)
+    {
+        <tr>
+            <td>@onderwerp.Name</td>
+            <td>
+                <a asp-route-id="@onderwerp.OnderwerpID"
+                   asp-page="/KoppelTabellen">Toon</a>
+
+                <a asp-route-id="@onderwerp.OnderwerpID"
+                   asp-page-handler="Delete">Delete</a>
+
+
+            </td>
+        </tr>
+    }
+</table>

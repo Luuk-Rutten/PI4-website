@@ -1,0 +1,28 @@
+﻿@page "{id?}"
+@model PI4_website.Pages.KoppelTabellenModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+}
+
+
+
+<form method ="post">
+Pas onderwerp aan: <input asp-for="Onderwerp.Name"/>
+<input asp-for="Onderwerp.OnderwerpID" type="hidden" />
+    <input type ="submit" class="btn btn-primary"/>
+</form>
+
+<p>
+<table class="table">
+    <tr>
+        
+       
+        @foreach (var i in Model.Onderwerp.Koppelingen)
+        {
+    <tr>
+        <td>@i.Onderwerpen.Name</td>
+    </tr>
+    }
+</table>
+</p>
